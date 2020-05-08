@@ -30,11 +30,6 @@
     </developers>
 
     <distributionManagement>
-        <!--<repository>
-            <id>github</id>
-            <name>GitHub xy1m Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/xy1m/revcontent-stats-api-java-client</url>
-        </repository>-->
         <repository>
             <id>internal</id>
             <url>http://archiva.inpwrd.net/archiva/repository/internal/</url>
@@ -50,7 +45,7 @@
         <retrofit.version>2.5.0</retrofit.version>
         <converter.jackson.version>2.3.0</converter.jackson.version>
         <logging.interceptor.version>3.12.1</logging.interceptor.version>
-        <jackson.databind.version>2.9.10.3</jackson.databind.version>
+        <jackson.databind.version>2.9.10.4</jackson.databind.version>
         <junit.version>4.12</junit.version>
         <mockito.all.version>1.10.19</mockito.all.version>
     </properties>
@@ -109,6 +104,7 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

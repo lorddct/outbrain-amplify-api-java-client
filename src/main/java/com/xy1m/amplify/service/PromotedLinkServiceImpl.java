@@ -3,7 +3,7 @@ package com.xy1m.amplify.service;
 import com.google.common.base.Joiner;
 import com.xy1m.amplify.exceptions.APIException;
 import com.xy1m.amplify.model.auth.Authentication;
-import com.xy1m.amplify.model.resource.Enabled;
+import com.xy1m.amplify.model.reference.objects.Enabled;
 import com.xy1m.amplify.model.resource.PromotedLink;
 import com.xy1m.amplify.model.resource.PromotedLinks;
 import com.xy1m.amplify.internal.PromotedLinkEndpoint;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PromotedLinkServiceImpl implements PromotedLinkService{
-    public static final int HTTP_OK = 200;
+
     private final Boolean performValidations;
     private final PromotedLinkEndpoint endpoint;
 
