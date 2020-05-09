@@ -45,7 +45,7 @@
         <retrofit.version>2.5.0</retrofit.version>
         <converter.jackson.version>2.3.0</converter.jackson.version>
         <logging.interceptor.version>3.12.1</logging.interceptor.version>
-        <jackson.databind.version>2.9.10.4</jackson.databind.version>
+        <jackson.version>2.10.1</jackson.version>
         <junit.version>4.12</junit.version>
         <mockito.all.version>1.10.19</mockito.all.version>
     </properties>
@@ -89,7 +89,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.databind.version}</version>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -111,6 +118,7 @@
             <version>5.3.1</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>

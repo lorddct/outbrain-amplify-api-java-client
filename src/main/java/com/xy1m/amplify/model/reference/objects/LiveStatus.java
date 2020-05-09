@@ -25,7 +25,7 @@ public class LiveStatus {
     @JsonProperty("amountSpent")
     private BigDecimal amountSpent;
     @JsonProperty("onAirModificationTime")
-    private LocalDate onAirModificationTime;
+    private String onAirModificationTime;
 
     public Boolean getCampaignOnAir() {
         return campaignOnAir;
@@ -51,11 +51,11 @@ public class LiveStatus {
         this.amountSpent = amountSpent;
     }
 
-    public LocalDate getOnAirModificationTime() {
+    public String getOnAirModificationTime() {
         return onAirModificationTime;
     }
 
-    public void setOnAirModificationTime(LocalDate onAirModificationTime) {
+    public void setOnAirModificationTime(String onAirModificationTime) {
         this.onAirModificationTime = onAirModificationTime;
     }
 

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.xy1m.amplify.model.reference.types.BudgetType;
 import com.xy1m.amplify.model.reference.types.PacingType;
 
@@ -47,12 +49,14 @@ public class Budget {
     @JsonProperty("amountSpent")
     private BigDecimal amountSpent;
     @JsonProperty("creationTime")
-    private LocalDateTime creationTime;
+    private String creationTime;
     @JsonProperty("lastModified")
-    private LocalDateTime lastModified;
+    private String lastModified;
     @JsonProperty("startDate")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate startDate;
     @JsonProperty("endDate")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate endDate;
     @JsonProperty("runForever")
     private Boolean runForever;
@@ -121,19 +125,19 @@ public class Budget {
         this.amountSpent = amountSpent;
     }
 
-    public LocalDateTime getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(LocalDateTime creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 
-    public LocalDateTime getLastModified() {
+    public String getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(LocalDateTime lastModified) {
+    public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
     }
 

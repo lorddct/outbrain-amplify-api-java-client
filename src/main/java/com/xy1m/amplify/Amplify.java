@@ -4,6 +4,7 @@ import com.xy1m.amplify.internal.AuthenticationEndpoint;
 import com.xy1m.amplify.internal.CommunicationFactory;
 import com.xy1m.amplify.internal.GeoEndpoint;
 import com.xy1m.amplify.internal.InterestEndpoint;
+import com.xy1m.amplify.internal.MarketerEndpoint;
 import com.xy1m.amplify.internal.config.CommunicationConfig;
 import com.xy1m.amplify.internal.config.SerializationConfig;
 import com.xy1m.amplify.internal.factories.AmplifyEndpointsFactory;
@@ -18,6 +19,8 @@ import com.xy1m.amplify.service.InterestService;
 import com.xy1m.amplify.service.InterestServiceImpl;
 import com.xy1m.amplify.internal.CampaignEndpoint;
 import com.xy1m.amplify.internal.PromotedLinkEndpoint;
+import com.xy1m.amplify.service.MarketerService;
+import com.xy1m.amplify.service.MarketerServiceImpl;
 import com.xy1m.amplify.service.PromotedLinkService;
 import com.xy1m.amplify.service.PromotedLinkServiceImpl;
 
@@ -28,17 +31,20 @@ public class Amplify {
     private final InterestService interestService;
     private final CampaignService campaignService;
     private final PromotedLinkService promotedLinkService;
+    private final MarketerService marketerService;
 
     private Amplify(AuthenticationService authenticationService,
                     GeoService geoService,
                     InterestService interestService,
                     CampaignService campaignService,
-                    PromotedLinkService promotedLinkService) {
+                    PromotedLinkService promotedLinkService,
+                    MarketerService marketerService) {
         this.authenticationService = authenticationService;
         this.geoService = geoService;
         this.interestService = interestService;
         this.campaignService = campaignService;
         this.promotedLinkService = promotedLinkService;
+        this.marketerService = marketerService;
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -59,6 +65,10 @@ public class Amplify {
 
     public PromotedLinkService getPromotedLinkService() {
         return promotedLinkService;
+    }
+
+    public MarketerService getMarketerService() {
+        return marketerService;
     }
 
     public static Amplify getInstance() {
@@ -167,7 +177,9 @@ public class Amplify {
                     new CampaignServiceImpl(performClientValidations,
                             endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {},
                     new PromotedLinkServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {}
+                            endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {},
+                    new MarketerServiceImpl(performClientValidations,
+                            endpointsFactory.createAuthEndpoint(MarketerEndpoint.class)) {}
             );
         }
     }

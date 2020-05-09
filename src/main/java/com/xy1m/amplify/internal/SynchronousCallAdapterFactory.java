@@ -68,11 +68,10 @@ public class SynchronousCallAdapterFactory extends CallAdapter.Factory {
 
                         throw new APIServerException(responseCode);
                     }
-
                 }
                 catch (IOException e) {
                     logger.error(e);
-                    throw new APIServerException();
+                    throw new APIServerException(e);
                 }
 
                 return obj;
@@ -82,12 +81,19 @@ public class SynchronousCallAdapterFactory extends CallAdapter.Factory {
 
     private APIError parseError(Response errorResponse) {
         ResponseBody errorBody = errorResponse.errorBody();
-        try {
-            return objectMapper.readValue(errorBody.bytes(), APIError.class);
+        if (errorBody != null) {
+            try {
+                return objectMapper.readValue(errorBody.bytes(), APIError.class);
+            }
+            catch (Throwable e) {
+                logger.error("Failed to parse API error response object [{}]", errorResponse.message());
+                return new APIError(errorResponse.message());
+            }
         }
-        catch (Throwable e) {
-            logger.warn("Failed to parse API error response object [{}]", errorResponse.message());
-            return new APIError(errorResponse.message());
+        else {
+            APIError error = new APIError();
+            error.setMessage(errorResponse.message());
+            return error;
         }
     }
 }

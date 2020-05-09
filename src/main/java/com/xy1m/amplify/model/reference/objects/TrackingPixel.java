@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TrackingPixel {
-    @JsonProperty("pc_id")
+    @JsonProperty("uuid")
     private String uuid;
     @JsonProperty("cid")
     private String cid;

@@ -2,16 +2,26 @@ package com.xy1m.amplify.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "message"
+        "message",
+        "validationErrors"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class APIError {
+
     public static final APIError EMPTY = new APIError();
+
+    @JsonProperty("message")
     private String message;
+
+    @JsonProperty("validationErrors")
+    private List<String> validationErrors;
 
     public APIError() {
     }
@@ -28,11 +38,19 @@ public class APIError {
         this.message = message;
     }
 
+    public List<String> getValidationErrors() {
+        return validationErrors;
+    }
+
+    public void setValidationErrors(List<String> validationErrors) {
+        this.validationErrors = validationErrors;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("APIError{");
-        sb.append("message='").append(message).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "APIError{" +
+                "message='" + message + '\'' +
+                ", validationErrors=" + validationErrors +
+                '}';
     }
 }

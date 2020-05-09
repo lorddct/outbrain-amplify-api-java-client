@@ -1,5 +1,7 @@
 package com.xy1m.amplify.model.campaign;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,11 +10,10 @@ import com.xy1m.amplify.annotations.ReadOnly;
 import com.xy1m.amplify.model.budget.Budget;
 import com.xy1m.amplify.model.reference.objects.Bids;
 import com.xy1m.amplify.model.reference.objects.CampaignBlockedSites;
-import com.xy1m.amplify.model.reference.objects.CampaignOnAirSchedulingRules;
 import com.xy1m.amplify.model.reference.objects.CampaignOptimization;
+import com.xy1m.amplify.model.reference.objects.CampaignScheduling;
 import com.xy1m.amplify.model.reference.objects.LiveStatus;
 import com.xy1m.amplify.model.reference.objects.Targeting;
-import com.xy1m.amplify.model.reference.objects.TrackingPixel;
 import com.xy1m.amplify.model.reference.types.CampaignObjective;
 import com.xy1m.amplify.model.reference.types.CampaignOnAirType;
 import com.xy1m.amplify.model.reference.types.ContentType;
@@ -20,8 +21,8 @@ import com.xy1m.amplify.model.reference.types.PreixTrackingCode;
 import com.xy1m.amplify.model.reference.types.SuffixTrackingCode;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -91,9 +92,9 @@ public class Campaign {
     @JsonProperty("preixTrackingCode")
     private PreixTrackingCode preixTrackingCode;
     @JsonProperty("lastModified")
-    private LocalDateTime lastModified;
+    private String lastModified;
     @JsonProperty("creationTime")
-    private LocalDateTime creationTime;
+    private String creationTime;
     @JsonProperty("liveStatus")
     private LiveStatus liveStatus;
     @JsonProperty("cpcPerAdEnabled")
@@ -102,8 +103,8 @@ public class Campaign {
     private CampaignBlockedSites campaignBlockedSites;
     @JsonProperty("startHour")
     private String startHour;
-    @JsonProperty("trackingPixels")
-    private List<TrackingPixel> trackingPixels;
+    //@JsonProperty("trackingPixels")
+    //private List<TrackingPixel> trackingPixels;
     @JsonProperty("bids")
     private Bids bids;
     @JsonProperty("campaignOptimization")
@@ -111,9 +112,11 @@ public class Campaign {
     @JsonProperty("onAirType")
     private CampaignOnAirType onAirType;
     @JsonProperty("scheduling")
-    private CampaignOnAirSchedulingRules scheduling;
+    private CampaignScheduling scheduling;
     @JsonProperty("objective")
     private CampaignObjective objective;
+
+    private Map<String, Object> attributes;
 
     public String getId() {
         return id;
@@ -243,19 +246,19 @@ public class Campaign {
         this.preixTrackingCode = preixTrackingCode;
     }
 
-    public LocalDateTime getLastModified() {
+    public String getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(LocalDateTime lastModified) {
+    public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
     }
 
-    public LocalDateTime getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(LocalDateTime creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -291,12 +294,14 @@ public class Campaign {
         this.startHour = startHour;
     }
 
-    public List<TrackingPixel> getTrackingPixels() {
-        return trackingPixels;
+    @JsonAnyGetter
+    public Map<String, Object> getAttributes() {
+        return attributes;
     }
 
-    public void setTrackingPixels(List<TrackingPixel> trackingPixels) {
-        this.trackingPixels = trackingPixels;
+    @JsonAnySetter
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     public Bids getBids() {
@@ -323,11 +328,11 @@ public class Campaign {
         this.onAirType = onAirType;
     }
 
-    public CampaignOnAirSchedulingRules getScheduling() {
+    public CampaignScheduling getScheduling() {
         return scheduling;
     }
 
-    public void setScheduling(CampaignOnAirSchedulingRules scheduling) {
+    public void setScheduling(CampaignScheduling scheduling) {
         this.scheduling = scheduling;
     }
 
@@ -364,7 +369,7 @@ public class Campaign {
         sb.append(", cpcPerAdEnabled=").append(cpcPerAdEnabled);
         sb.append(", campaignBlockedSites=").append(campaignBlockedSites);
         sb.append(", startHour='").append(startHour).append('\'');
-        sb.append(", trackingPixels=").append(trackingPixels);
+        //sb.append(", trackingPixels=").append(trackingPixels);
         sb.append(", bids=").append(bids);
         sb.append(", campaignOptimization=").append(campaignOptimization);
         sb.append(", onAirType=").append(onAirType);
