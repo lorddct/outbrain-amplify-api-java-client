@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "encode"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PreixTrackingCode {
+public class PrefixTrackingCode {
     private String prefix;
     private boolean encode;
 
@@ -32,7 +32,7 @@ public class PreixTrackingCode {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("PreixTrackingCode{");
+        final StringBuffer sb = new StringBuffer("PrefixTrackingCode{");
         sb.append("prefix='").append(prefix).append('\'');
         sb.append(", encode=").append(encode);
         sb.append('}');
