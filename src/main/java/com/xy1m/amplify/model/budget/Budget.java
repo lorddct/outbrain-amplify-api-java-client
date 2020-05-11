@@ -4,14 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.xy1m.amplify.model.reference.types.BudgetType;
 import com.xy1m.amplify.model.reference.types.PacingType;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -53,11 +49,9 @@ public class Budget {
     @JsonProperty("lastModified")
     private String lastModified;
     @JsonProperty("startDate")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate startDate;
+    private String startDate;
     @JsonProperty("endDate")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate endDate;
+    private String endDate;
     @JsonProperty("runForever")
     private Boolean runForever;
     @JsonProperty("type")
@@ -141,19 +135,19 @@ public class Budget {
         this.lastModified = lastModified;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
