@@ -18,11 +18,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 public class CampaignServiceImpl implements CampaignService {
 
-    private final Boolean performValidations;
     private final CampaignEndpoint endpoint;
 
-    public CampaignServiceImpl(Boolean performValidations, CampaignEndpoint endpoint) {
-        this.performValidations = performValidations;
+    public CampaignServiceImpl(CampaignEndpoint endpoint) {
         this.endpoint = endpoint;
     }
 
@@ -57,18 +55,14 @@ public class CampaignServiceImpl implements CampaignService {
 
     @Override
     public MultipleCampaignsResponse batchGet(Authentication auth, List<String> ids, String extraFields) {
-        if (performValidations) {
-            checkArgument(ids != null && !ids.isEmpty(), "Ids required");
-            checkArgument(ids.size() <= 50, "Retrieve up to 50 campaigns once");
-        }
+        checkArgument(ids != null && !ids.isEmpty(), "Ids required");
+        checkArgument(ids.size() <= 50, "Retrieve up to 50 campaigns once");
         return endpoint.batchGet(auth.getToken().getAccessToken(), Joiner.on(",").join(ids), extraFields);
     }
 
     @Override
     public MultipleCampaignsResponse getByBudgetId(Authentication auth, String budgetId) {
-        if (performValidations) {
-            checkArgument(budgetId != null, "budgetId required");
-        }
+        checkArgument(budgetId != null, "budgetId required");
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.getByBudgetId(accessToken, budgetId);
     }
@@ -81,19 +75,15 @@ public class CampaignServiceImpl implements CampaignService {
                                                      String extraFields,
                                                      Integer limit,
                                                      Integer offset) {
-        if (performValidations) {
-            checkArgument(marketerId != null, "marketerId required");
-            checkArgument(limit <= 50, "Max limit is 50");
-        }
+        checkArgument(marketerId != null, "marketerId required");
+        checkArgument(limit <= 50, "Max limit is 50");
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.getByMarketerId(accessToken, marketerId, includeArchived, fetch, extraFields, limit, offset);
     }
 
     @Override
     public List<GeoLocation> getGeoLocationsByCampaignId(Authentication auth, String campaignId) {
-        if (performValidations) {
-            checkArgument(campaignId != null, "campaignId required");
-        }
+        checkArgument(campaignId != null, "campaignId required");
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.getGeoLocationsByCampaignId(accessToken, campaignId);
     }
