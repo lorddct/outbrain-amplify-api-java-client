@@ -1,7 +1,5 @@
 package com.xy1m.amplify.model.campaign;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,17 +10,16 @@ import com.xy1m.amplify.model.reference.objects.Bids;
 import com.xy1m.amplify.model.reference.objects.CampaignBlockedSites;
 import com.xy1m.amplify.model.reference.objects.CampaignOptimization;
 import com.xy1m.amplify.model.reference.objects.CampaignScheduling;
+import com.xy1m.amplify.model.reference.objects.CampaignTrackingPixel;
 import com.xy1m.amplify.model.reference.objects.LiveStatus;
 import com.xy1m.amplify.model.reference.objects.Targeting;
 import com.xy1m.amplify.model.reference.types.CampaignObjective;
 import com.xy1m.amplify.model.reference.types.CampaignOnAirType;
 import com.xy1m.amplify.model.reference.types.ContentType;
-import com.xy1m.amplify.model.reference.types.PreixTrackingCode;
-import com.xy1m.amplify.model.reference.types.SuffixTrackingCode;
+import com.xy1m.amplify.model.reference.types.PrefixTrackingCode;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -88,9 +85,9 @@ public class Campaign {
     @JsonProperty("budgetId")
     private String budgetId;
     @JsonProperty("suffixTrackingCode")
-    private SuffixTrackingCode suffixTrackingCode;
-    @JsonProperty("preixTrackingCode")
-    private PreixTrackingCode preixTrackingCode;
+    private String suffixTrackingCode;
+    @JsonProperty("prefixTrackingCode")
+    private PrefixTrackingCode prefixTrackingCode;
     @JsonProperty("lastModified")
     private String lastModified;
     @JsonProperty("creationTime")
@@ -103,8 +100,8 @@ public class Campaign {
     private CampaignBlockedSites campaignBlockedSites;
     @JsonProperty("startHour")
     private String startHour;
-    //@JsonProperty("trackingPixels")
-    //private List<TrackingPixel> trackingPixels;
+    @JsonProperty("trackingPixels")
+    private CampaignTrackingPixel trackingPixels;
     @JsonProperty("bids")
     private Bids bids;
     @JsonProperty("campaignOptimization")
@@ -115,8 +112,6 @@ public class Campaign {
     private CampaignScheduling scheduling;
     @JsonProperty("objective")
     private CampaignObjective objective;
-
-    private Map<String, Object> attributes;
 
     public String getId() {
         return id;
@@ -230,20 +225,20 @@ public class Campaign {
         this.budgetId = budgetId;
     }
 
-    public SuffixTrackingCode getSuffixTrackingCode() {
+    public String getSuffixTrackingCode() {
         return suffixTrackingCode;
     }
 
-    public void setSuffixTrackingCode(SuffixTrackingCode suffixTrackingCode) {
+    public void setSuffixTrackingCode(String suffixTrackingCode) {
         this.suffixTrackingCode = suffixTrackingCode;
     }
 
-    public PreixTrackingCode getPreixTrackingCode() {
-        return preixTrackingCode;
+    public PrefixTrackingCode getPrefixTrackingCode() {
+        return prefixTrackingCode;
     }
 
-    public void setPreixTrackingCode(PreixTrackingCode preixTrackingCode) {
-        this.preixTrackingCode = preixTrackingCode;
+    public void setPrefixTrackingCode(PrefixTrackingCode prefixTrackingCode) {
+        this.prefixTrackingCode = prefixTrackingCode;
     }
 
     public String getLastModified() {
@@ -294,16 +289,6 @@ public class Campaign {
         this.startHour = startHour;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
-
-    @JsonAnySetter
-    public void setAttributes(Map<String, Object> attributes) {
-        this.attributes = attributes;
-    }
-
     public Bids getBids() {
         return bids;
     }
@@ -344,6 +329,14 @@ public class Campaign {
         this.objective = objective;
     }
 
+    public CampaignTrackingPixel getTrackingPixels() {
+        return trackingPixels;
+    }
+
+    public void setTrackingPixels(CampaignTrackingPixel trackingPixels) {
+        this.trackingPixels = trackingPixels;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Campaign{");
@@ -362,14 +355,14 @@ public class Campaign {
         sb.append(", budget=").append(budget);
         sb.append(", budgetId='").append(budgetId).append('\'');
         sb.append(", suffixTrackingCode=").append(suffixTrackingCode);
-        sb.append(", preixTrackingCode=").append(preixTrackingCode);
+        sb.append(", preixTrackingCode=").append(prefixTrackingCode);
         sb.append(", lastModified=").append(lastModified);
         sb.append(", creationTime=").append(creationTime);
         sb.append(", liveStatus=").append(liveStatus);
         sb.append(", cpcPerAdEnabled=").append(cpcPerAdEnabled);
         sb.append(", campaignBlockedSites=").append(campaignBlockedSites);
         sb.append(", startHour='").append(startHour).append('\'');
-        //sb.append(", trackingPixels=").append(trackingPixels);
+        sb.append(", trackingPixels=").append(trackingPixels);
         sb.append(", bids=").append(bids);
         sb.append(", campaignOptimization=").append(campaignOptimization);
         sb.append(", onAirType=").append(onAirType);

@@ -9,12 +9,12 @@ import com.xy1m.amplify.model.marketer.MarketerListResponse;
 
 public interface MarketerService {
 
-    Budget createBudget(Authentication auth, String marketerId, Budget budget, String extraFields) throws APIException;
+    Budget createBudget(Authentication auth, String marketerId, Budget budget) throws APIException;
 
-    Marketer get(Authentication auth, String marketerId, String extraFields) throws APIException;
+    Marketer get(Authentication auth, String marketerId) throws APIException;
 
-    MarketerListResponse getAll(Authentication auth, String extraFields) throws APIException;
+    MarketerListResponse getAll(Authentication auth) throws APIException;
 
-    BudgetListResponse getBudgets(Authentication auth, String marketerId, boolean detachedOnly, String extraFields) throws APIException;
+    BudgetListResponse getBudgets(Authentication auth, String marketerId, boolean detachedOnly) throws APIException;
 
 }
