@@ -15,11 +15,9 @@ import java.util.Map;
 
 public class PromotedLinkServiceImpl implements PromotedLinkService{
 
-    private final Boolean performValidations;
     private final PromotedLinkEndpoint endpoint;
 
-    public PromotedLinkServiceImpl(Boolean performValidations, PromotedLinkEndpoint endpoint) {
-        this.performValidations = performValidations;
+    public PromotedLinkServiceImpl(PromotedLinkEndpoint endpoint) {
         this.endpoint = endpoint;
     }
 

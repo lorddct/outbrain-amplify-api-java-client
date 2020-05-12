@@ -10,11 +10,9 @@ import com.xy1m.amplify.model.marketer.MarketerListResponse;
 
 public class MarketerServiceImpl implements MarketerService {
 
-    private final Boolean performValidations;
     private final MarketerEndpoint endpoint;
 
-    public MarketerServiceImpl(Boolean performValidations, MarketerEndpoint endpoint) {
-        this.performValidations = performValidations;
+    public MarketerServiceImpl(MarketerEndpoint endpoint) {
         this.endpoint = endpoint;
     }
 

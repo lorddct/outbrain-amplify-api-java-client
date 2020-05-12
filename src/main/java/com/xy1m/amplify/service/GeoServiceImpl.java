@@ -9,11 +9,9 @@ import java.util.List;
 
 public class GeoServiceImpl implements GeoService {
 
-    private final Boolean performValidations;
     private final GeoEndpoint endpoint;
 
-    public GeoServiceImpl(Boolean performValidations, GeoEndpoint endpoint) {
-        this.performValidations = performValidations;
+    public GeoServiceImpl(GeoEndpoint endpoint) {
         this.endpoint = endpoint;
     }
 

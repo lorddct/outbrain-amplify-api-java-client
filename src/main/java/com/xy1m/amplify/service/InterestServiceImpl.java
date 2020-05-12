@@ -8,11 +8,9 @@ import com.xy1m.amplify.model.resource.InterestTargeting;
 
 public class InterestServiceImpl implements InterestService {
 
-    private final Boolean performValidations;
     private final InterestEndpoint endpoint;
 
-    public InterestServiceImpl(Boolean performValidations, InterestEndpoint endpoint) {
-        this.performValidations = performValidations;
+    public InterestServiceImpl(InterestEndpoint endpoint) {
         this.endpoint = endpoint;
     }
 

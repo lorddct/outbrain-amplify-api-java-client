@@ -5,6 +5,7 @@ import com.xy1m.amplify.internal.CommunicationFactory;
 import com.xy1m.amplify.internal.GeoEndpoint;
 import com.xy1m.amplify.internal.InterestEndpoint;
 import com.xy1m.amplify.internal.MarketerEndpoint;
+import com.xy1m.amplify.internal.PerformanceReportEndpoint;
 import com.xy1m.amplify.internal.config.CommunicationConfig;
 import com.xy1m.amplify.internal.config.SerializationConfig;
 import com.xy1m.amplify.internal.factories.AmplifyEndpointsFactory;
@@ -21,6 +22,8 @@ import com.xy1m.amplify.internal.CampaignEndpoint;
 import com.xy1m.amplify.internal.PromotedLinkEndpoint;
 import com.xy1m.amplify.service.MarketerService;
 import com.xy1m.amplify.service.MarketerServiceImpl;
+import com.xy1m.amplify.service.PerformanceReportService;
+import com.xy1m.amplify.service.PerformanceReportServiceImpl;
 import com.xy1m.amplify.service.PromotedLinkService;
 import com.xy1m.amplify.service.PromotedLinkServiceImpl;
 
@@ -32,19 +35,22 @@ public class Amplify {
     private final CampaignService campaignService;
     private final PromotedLinkService promotedLinkService;
     private final MarketerService marketerService;
+    private final PerformanceReportService performanceReportService;
 
     private Amplify(AuthenticationService authenticationService,
                     GeoService geoService,
                     InterestService interestService,
                     CampaignService campaignService,
                     PromotedLinkService promotedLinkService,
-                    MarketerService marketerService) {
+                    MarketerService marketerService,
+                    PerformanceReportService performanceReportService) {
         this.authenticationService = authenticationService;
         this.geoService = geoService;
         this.interestService = interestService;
         this.campaignService = campaignService;
         this.promotedLinkService = promotedLinkService;
         this.marketerService = marketerService;
+        this.performanceReportService = performanceReportService;
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -69,6 +75,10 @@ public class Amplify {
 
     public MarketerService getMarketerService() {
         return marketerService;
+    }
+
+    public PerformanceReportService getPerformanceReportService() {
+        return performanceReportService;
     }
 
     public static Amplify getInstance() {
@@ -96,7 +106,6 @@ public class Amplify {
         private long readTimeoutMillis = 0L;
         private int maxIdleConnections = DEFAULT_MAX_IDLE_CONNECTIONS;
         private long keepAliveDurationMillis = DEFAULT_KEEP_ALIVE_DURATION_MILLIS;
-        private boolean performClientValidations = true;
         private boolean debug = false;
         private boolean organizeDynamicColumns = true;
         private SerializationConfig serializationConfig = DEFAULT_SERIALIZATION_CONFIG;
@@ -141,11 +150,6 @@ public class Amplify {
             return this;
         }
 
-        public AmplifyBuilder setPerformClientValidations(Boolean performClientValidations) {
-            this.performClientValidations = performClientValidations;
-            return this;
-        }
-
         public AmplifyBuilder setDebug(Boolean debug) {
             this.debug = debug;
             return this;
@@ -170,16 +174,12 @@ public class Amplify {
             AmplifyEndpointsFactory endpointsFactory = new AmplifyEndpointsRetrofitFactory(communicator);
             return new Amplify(
                     new AuthenticationServiceImpl(endpointsFactory.createAuthEndpoint(AuthenticationEndpoint.class)) {},
-                    new GeoServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(GeoEndpoint.class)) {},
-                    new InterestServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {},
-                    new CampaignServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {},
-                    new PromotedLinkServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {},
-                    new MarketerServiceImpl(performClientValidations,
-                            endpointsFactory.createAuthEndpoint(MarketerEndpoint.class)) {}
+                    new GeoServiceImpl(endpointsFactory.createAuthEndpoint(GeoEndpoint.class)) {},
+                    new InterestServiceImpl(endpointsFactory.createAuthEndpoint(InterestEndpoint.class)) {},
+                    new CampaignServiceImpl(endpointsFactory.createAuthEndpoint(CampaignEndpoint.class)) {},
+                    new PromotedLinkServiceImpl(endpointsFactory.createAuthEndpoint(PromotedLinkEndpoint.class)) {},
+                    new MarketerServiceImpl(endpointsFactory.createAuthEndpoint(MarketerEndpoint.class)) {},
+                    new PerformanceReportServiceImpl(endpointsFactory.createAuthEndpoint(PerformanceReportEndpoint.class))
             );
         }
     }
