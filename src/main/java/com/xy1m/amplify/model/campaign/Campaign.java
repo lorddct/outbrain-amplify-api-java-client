@@ -17,7 +17,6 @@ import com.xy1m.amplify.model.reference.types.CampaignObjective;
 import com.xy1m.amplify.model.reference.types.CampaignOnAirType;
 import com.xy1m.amplify.model.reference.types.ContentType;
 import com.xy1m.amplify.model.reference.types.PrefixTrackingCode;
-import com.xy1m.amplify.model.reference.types.SuffixTrackingCode;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -86,7 +85,7 @@ public class Campaign {
     @JsonProperty("budgetId")
     private String budgetId;
     @JsonProperty("suffixTrackingCode")
-    private SuffixTrackingCode suffixTrackingCode;
+    private String suffixTrackingCode;
     @JsonProperty("prefixTrackingCode")
     private PrefixTrackingCode prefixTrackingCode;
     @JsonProperty("lastModified")
@@ -226,11 +225,11 @@ public class Campaign {
         this.budgetId = budgetId;
     }
 
-    public SuffixTrackingCode getSuffixTrackingCode() {
+    public String getSuffixTrackingCode() {
         return suffixTrackingCode;
     }
 
-    public void setSuffixTrackingCode(SuffixTrackingCode suffixTrackingCode) {
+    public void setSuffixTrackingCode(String suffixTrackingCode) {
         this.suffixTrackingCode = suffixTrackingCode;
     }
 

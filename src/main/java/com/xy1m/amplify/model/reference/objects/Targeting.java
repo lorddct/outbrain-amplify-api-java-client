@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.xy1m.amplify.model.resource.InterestTargeting;
 import com.xy1m.amplify.model.reference.types.Platform;
 import com.xy1m.amplify.model.reference.types.PlatformBrowser;
 import com.xy1m.amplify.model.reference.types.PlatformOperatingSystem;
+import com.xy1m.amplify.model.resource.GeoLocation;
+import com.xy1m.amplify.model.resource.InterestTargeting;
 
 import java.util.List;
 
@@ -24,22 +25,30 @@ import java.util.List;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Targeting {
+
     @JsonProperty("platform")
     private List<Platform> platform;
+
     @JsonProperty("locations")
-    private List<String> locations;
-    @JsonProperty("excludeAdBlockUsers")
-    private Boolean excludeAdBlockUsers;
-    @JsonProperty("customAudience")
-    private CustomAudience customAudience;
-    @JsonProperty("useExtendedNetworkTraffic")
-    private Boolean useExtendedNetworkTraffic;
+    private List<GeoLocation> locations;
+
     @JsonProperty("browsers")
     private List<PlatformBrowser> browsers;
+
     @JsonProperty("operatingSystems")
     private List<PlatformOperatingSystem> operatingSystems;
+
     @JsonProperty("interests")
     private List<InterestTargeting> interests;
+
+    @JsonProperty("excludeAdBlockUsers")
+    private Boolean excludeAdBlockUsers;
+
+    @JsonProperty("customAudience")
+    private CustomAudience customAudience;
+
+    @JsonProperty("includeCellularNetwork")
+    private Boolean includeCellularNetwork;
 
     public List<Platform> getPlatform() {
         return platform;
@@ -49,11 +58,11 @@ public class Targeting {
         this.platform = platform;
     }
 
-    public List<String> getLocations() {
+    public List<GeoLocation> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<String> locations) {
+    public void setLocations(List<GeoLocation> locations) {
         this.locations = locations;
     }
 
@@ -73,12 +82,12 @@ public class Targeting {
         this.customAudience = customAudience;
     }
 
-    public Boolean getUseExtendedNetworkTraffic() {
-        return useExtendedNetworkTraffic;
+    public Boolean getIncludeCellularNetwork() {
+        return includeCellularNetwork;
     }
 
-    public void setUseExtendedNetworkTraffic(Boolean useExtendedNetworkTraffic) {
-        this.useExtendedNetworkTraffic = useExtendedNetworkTraffic;
+    public void setIncludeCellularNetwork(Boolean includeCellularNetwork) {
+        this.includeCellularNetwork = includeCellularNetwork;
     }
 
     public List<PlatformBrowser> getBrowsers() {
@@ -112,7 +121,7 @@ public class Targeting {
         sb.append(", locations=").append(locations);
         sb.append(", excludeAdBlockUsers=").append(excludeAdBlockUsers);
         sb.append(", customAudience=").append(customAudience);
-        sb.append(", useExtendedNetworkTraffic=").append(useExtendedNetworkTraffic);
+        sb.append(", includeCellularNetwork=").append(includeCellularNetwork);
         sb.append(", browsers=").append(browsers);
         sb.append(", operatingSystems=").append(operatingSystems);
         sb.append(", interests=").append(interests);
