@@ -35,4 +35,5 @@ public interface CampaignService {
                                               Integer offset);
 
     List<GeoLocation> getGeoLocationsByCampaignId(Authentication auth, String campaignId);
+
 }

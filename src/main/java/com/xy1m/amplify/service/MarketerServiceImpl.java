@@ -19,22 +19,22 @@ public class MarketerServiceImpl implements MarketerService {
     }
 
     @Override
-    public Budget createBudget(Authentication auth, String marketerId, Budget budget, String extraFields) throws APIException {
+    public Budget createBudget(Authentication auth, String marketerId, Budget budget) throws APIException {
         return endpoint.createBudget(auth.getToken().getAccessToken(), marketerId, budget);
     }
 
     @Override
-    public Marketer get(Authentication auth, String marketerId, String extraFields) throws APIException {
+    public Marketer get(Authentication auth, String marketerId) throws APIException {
         return endpoint.getById(auth.getToken().getAccessToken(), marketerId);
     }
 
     @Override
-    public MarketerListResponse getAll(Authentication auth, String extraFields) throws APIException {
+    public MarketerListResponse getAll(Authentication auth) throws APIException {
         return endpoint.getAll(auth.getToken().getAccessToken());
     }
 
     @Override
-    public BudgetListResponse getBudgets(Authentication auth, String marketerId, boolean detachedOnly, String extraFields) throws APIException {
+    public BudgetListResponse getBudgets(Authentication auth, String marketerId, boolean detachedOnly) throws APIException {
         return endpoint.getBudgetsByMarketerId(auth.getToken().getAccessToken(), marketerId, detachedOnly);
     }
 
