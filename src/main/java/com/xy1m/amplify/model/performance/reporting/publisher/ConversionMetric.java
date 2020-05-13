@@ -1,4 +1,4 @@
-package com.xy1m.amplify.model.performance_reporting.content_publisher_campaign;
+package com.xy1m.amplify.model.performance.reporting.publisher;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -6,39 +6,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "impressions",
-        "clicks",
+        "name",
         "totalConversions",
         "conversions",
         "viewConversions",
-        "spend",
-        "ecpc",
-        "ctr",
         "conversionRate",
         "viewConversionRate",
-        "cpa",
         "totalCpa",
+        "cpa",
         "totalValue",
         "totalSumValue",
         "sumValue",
         "viewSumValue",
         "totalAverageValue",
         "averageValue",
-        "viewAverageValue",
-        "conversionMetrics"
+        "viewAverageValue"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Metrics {
+public class ConversionMetric {
 
-    @JsonProperty("impressions")
-    private int impressions;
-
-    @JsonProperty("clicks")
-    private int clicks;
+    @JsonProperty("name")
+    private String name;
 
     @JsonProperty("totalConversions")
     private int totalConversions;
@@ -49,26 +40,17 @@ public class Metrics {
     @JsonProperty("viewConversions")
     private int viewConversions;
 
-    @JsonProperty("spend")
-    private BigDecimal spend;
-
-    @JsonProperty("ecpc")
-    private BigDecimal ecpc;
-
-    @JsonProperty("ctr")
-    private BigDecimal ctr;
-
     @JsonProperty("conversionRate")
     private BigDecimal conversionRate;
 
     @JsonProperty("viewConversionRate")
     private int viewConversionRate;
 
-    @JsonProperty("cpa")
-    private BigDecimal cpa;
-
     @JsonProperty("totalCpa")
     private BigDecimal totalCpa;
+
+    @JsonProperty("cpa")
+    private BigDecimal cpa;
 
     @JsonProperty("totalValue")
     private int totalValue;
@@ -83,31 +65,20 @@ public class Metrics {
     private int viewSumValue;
 
     @JsonProperty("totalAverageValue")
-    private BigDecimal totalAverageValue;
+    private int totalAverageValue;
 
     @JsonProperty("averageValue")
-    private BigDecimal averageValue;
+    private int averageValue;
 
     @JsonProperty("viewAverageValue")
     private int viewAverageValue;
 
-    @JsonProperty("conversionMetrics")
-    private List<ConversionMetric> conversionMetrics;
-
-    public int getImpressions() {
-        return impressions;
+    public String getName() {
+        return name;
     }
 
-    public void setImpressions(int impressions) {
-        this.impressions = impressions;
-    }
-
-    public int getClicks() {
-        return clicks;
-    }
-
-    public void setClicks(int clicks) {
-        this.clicks = clicks;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getTotalConversions() {
@@ -134,30 +105,6 @@ public class Metrics {
         this.viewConversions = viewConversions;
     }
 
-    public BigDecimal getSpend() {
-        return spend;
-    }
-
-    public void setSpend(BigDecimal spend) {
-        this.spend = spend;
-    }
-
-    public BigDecimal getEcpc() {
-        return ecpc;
-    }
-
-    public void setEcpc(BigDecimal ecpc) {
-        this.ecpc = ecpc;
-    }
-
-    public BigDecimal getCtr() {
-        return ctr;
-    }
-
-    public void setCtr(BigDecimal ctr) {
-        this.ctr = ctr;
-    }
-
     public BigDecimal getConversionRate() {
         return conversionRate;
     }
@@ -174,20 +121,20 @@ public class Metrics {
         this.viewConversionRate = viewConversionRate;
     }
 
-    public BigDecimal getCpa() {
-        return cpa;
-    }
-
-    public void setCpa(BigDecimal cpa) {
-        this.cpa = cpa;
-    }
-
     public BigDecimal getTotalCpa() {
         return totalCpa;
     }
 
     public void setTotalCpa(BigDecimal totalCpa) {
         this.totalCpa = totalCpa;
+    }
+
+    public BigDecimal getCpa() {
+        return cpa;
+    }
+
+    public void setCpa(BigDecimal cpa) {
+        this.cpa = cpa;
     }
 
     public int getTotalValue() {
@@ -222,19 +169,19 @@ public class Metrics {
         this.viewSumValue = viewSumValue;
     }
 
-    public BigDecimal getTotalAverageValue() {
+    public int getTotalAverageValue() {
         return totalAverageValue;
     }
 
-    public void setTotalAverageValue(BigDecimal totalAverageValue) {
+    public void setTotalAverageValue(int totalAverageValue) {
         this.totalAverageValue = totalAverageValue;
     }
 
-    public BigDecimal getAverageValue() {
+    public int getAverageValue() {
         return averageValue;
     }
 
-    public void setAverageValue(BigDecimal averageValue) {
+    public void setAverageValue(int averageValue) {
         this.averageValue = averageValue;
     }
 
@@ -244,13 +191,5 @@ public class Metrics {
 
     public void setViewAverageValue(int viewAverageValue) {
         this.viewAverageValue = viewAverageValue;
-    }
-
-    public List<ConversionMetric> getConversionMetrics() {
-        return conversionMetrics;
-    }
-
-    public void setConversionMetrics(List<ConversionMetric> conversionMetrics) {
-        this.conversionMetrics = conversionMetrics;
     }
 }

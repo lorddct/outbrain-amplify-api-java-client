@@ -1,8 +1,7 @@
 package com.xy1m.amplify.internal;
 
-
-import com.xy1m.amplify.model.performance_reporting.PeriodicCampaign;
-import com.xy1m.amplify.model.performance_reporting.PublisherCampaign;
+import com.xy1m.amplify.model.performance.reporting.periodic.PeriodicCampaign;
+import com.xy1m.amplify.model.performance.reporting.publisher.PublisherCampaign;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;

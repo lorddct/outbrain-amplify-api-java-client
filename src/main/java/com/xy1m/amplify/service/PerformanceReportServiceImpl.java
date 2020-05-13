@@ -3,8 +3,8 @@ package com.xy1m.amplify.service;
 import com.xy1m.amplify.exceptions.APIException;
 import com.xy1m.amplify.internal.PerformanceReportEndpoint;
 import com.xy1m.amplify.model.auth.Authentication;
-import com.xy1m.amplify.model.performance_reporting.PeriodicCampaign;
-import com.xy1m.amplify.model.performance_reporting.PublisherCampaign;
+import com.xy1m.amplify.model.performance.reporting.periodic.PeriodicCampaign;
+import com.xy1m.amplify.model.performance.reporting.publisher.PublisherCampaign;
 
 import java.util.Date;
 

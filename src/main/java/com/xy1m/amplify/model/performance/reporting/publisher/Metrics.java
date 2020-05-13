@@ -1,4 +1,4 @@
-package com.xy1m.amplify.model.performance_reporting.content_periodic_campaign;
+package com.xy1m.amplify.model.performance.reporting.publisher;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -27,7 +28,8 @@ import java.math.BigDecimal;
         "viewSumValue",
         "totalAverageValue",
         "averageValue",
-        "viewAverageValue"
+        "viewAverageValue",
+        "conversionMetrics"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Metrics {
@@ -69,13 +71,13 @@ public class Metrics {
     private BigDecimal totalCpa;
 
     @JsonProperty("totalValue")
-    private BigDecimal totalValue;
+    private int totalValue;
 
     @JsonProperty("totalSumValue")
-    private BigDecimal totalSumValue;
+    private int totalSumValue;
 
     @JsonProperty("sumValue")
-    private BigDecimal sumValue;
+    private int sumValue;
 
     @JsonProperty("viewSumValue")
     private int viewSumValue;
@@ -88,6 +90,9 @@ public class Metrics {
 
     @JsonProperty("viewAverageValue")
     private int viewAverageValue;
+
+    @JsonProperty("conversionMetrics")
+    private List<ConversionMetric> conversionMetrics;
 
     public int getImpressions() {
         return impressions;
@@ -185,27 +190,27 @@ public class Metrics {
         this.totalCpa = totalCpa;
     }
 
-    public BigDecimal getTotalValue() {
+    public int getTotalValue() {
         return totalValue;
     }
 
-    public void setTotalValue(BigDecimal totalValue) {
+    public void setTotalValue(int totalValue) {
         this.totalValue = totalValue;
     }
 
-    public BigDecimal getTotalSumValue() {
+    public int getTotalSumValue() {
         return totalSumValue;
     }
 
-    public void setTotalSumValue(BigDecimal totalSumValue) {
+    public void setTotalSumValue(int totalSumValue) {
         this.totalSumValue = totalSumValue;
     }
 
-    public BigDecimal getSumValue() {
+    public int getSumValue() {
         return sumValue;
     }
 
-    public void setSumValue(BigDecimal sumValue) {
+    public void setSumValue(int sumValue) {
         this.sumValue = sumValue;
     }
 
@@ -239,5 +244,13 @@ public class Metrics {
 
     public void setViewAverageValue(int viewAverageValue) {
         this.viewAverageValue = viewAverageValue;
+    }
+
+    public List<ConversionMetric> getConversionMetrics() {
+        return conversionMetrics;
+    }
+
+    public void setConversionMetrics(List<ConversionMetric> conversionMetrics) {
+        this.conversionMetrics = conversionMetrics;
     }
 }

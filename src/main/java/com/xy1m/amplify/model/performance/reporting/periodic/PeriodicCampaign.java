@@ -1,10 +1,9 @@
-package com.xy1m.amplify.model.performance_reporting;
+package com.xy1m.amplify.model.performance.reporting.periodic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.xy1m.amplify.model.performance_reporting.content_periodic_campaign.CampaignResult;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xy1m.amplify.model.performance_reporting.content_publisher_campaign;
+package com.xy1m.amplify.model.performance.reporting.publisher;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
