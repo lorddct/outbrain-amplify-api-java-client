@@ -1,9 +1,10 @@
-package com.xy1m.amplify.model.campaign;
+package com.xy1m.amplify.model.performance_reporting;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.xy1m.amplify.model.performance_reporting.content_publisher_campaign.CampaignResult;
 
 import java.util.List;
 
@@ -16,16 +17,16 @@ import java.util.List;
 public class PublisherCampaign {
 
     @JsonProperty("campaignResults")
-    private List<Campaign> campaignResults;
+    private List<CampaignResult> campaignResults;
 
     @JsonProperty("totalCampaigns")
     private int totalCampaigns;
 
-    public List<Campaign> getCampaignResults() {
+    public List<CampaignResult> getCampaignResults() {
         return campaignResults;
     }
 
-    public void setCampaignResults(List<Campaign> campaignResults) {
+    public void setCampaignResults(List<CampaignResult> campaignResults) {
         this.campaignResults = campaignResults;
     }
 
