@@ -6,11 +6,8 @@ import com.xy1m.amplify.model.performance.reporting.content.PeriodicContent;
 import com.xy1m.amplify.model.performance.reporting.periodic.PeriodicCampaign;
 import com.xy1m.amplify.model.performance.reporting.publisher.PublisherCampaign;
 import com.xy1m.amplify.model.performance.reporting.publishers.Publisher;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public interface PerformanceReportService {
 
