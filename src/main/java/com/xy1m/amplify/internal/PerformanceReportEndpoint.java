@@ -10,16 +10,14 @@ import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-import java.util.Date;
-
 public interface PerformanceReportEndpoint {
 
     @GET(Paths.API_PATH_PREFIX + "/reports/marketers/{id}/campaigns/periodic")
     @Headers("Content-Type: application/json")
     PeriodicCampaign getPeriodicCampaign(@Header("OB-TOKEN-V1") String accessToken,
                                          @Path("id") String id,
-                                         @Query("from") Date from,
-                                         @Query("to") Date to,
+                                         @Query("from") String from,
+                                         @Query("to") String to,
                                          @Query("limit") int limit,
                                          @Query("offset") int offset,
                                          @Query("breakdown") String breakdown,
@@ -32,8 +30,8 @@ public interface PerformanceReportEndpoint {
     @Headers("Content-Type: application/json")
     PublisherCampaign getPublisherCampaign(@Header("OB-TOKEN-V1") String accessToken,
                                            @Path("id") String id,
-                                           @Query("from") Date from,
-                                           @Query("to") Date to,
+                                           @Query("from") String from,
+                                           @Query("to") String to,
                                            @Query("limit") int limit,
                                            @Query("offset") int offset,
                                            @Query("includeArchivedCampaigns") boolean includeArchivedCampaigns,
@@ -46,8 +44,8 @@ public interface PerformanceReportEndpoint {
     PeriodicContent getPeriodicContent(@Header("OB-TOKEN-V1") String accessToken,
                                        @Path("id") String id,
                                        @Path("campaignId") String campaignId,
-                                       @Query("from") Date from,
-                                       @Query("to") Date to,
+                                       @Query("from") String from,
+                                       @Query("to") String to,
                                        @Query("limit") int limit,
                                        @Query("offset") int offset,
                                        @Query("breakdown") String breakdown,
@@ -58,8 +56,8 @@ public interface PerformanceReportEndpoint {
     @Headers("Content-Type: application/json")
     Publisher getPublisher(@Header("OB-TOKEN-V1") String accessToken,
                            @Path("id") String id,
-                           @Query("from") Date from,
-                           @Query("to") Date to,
+                           @Query("from") String from,
+                           @Query("to") String to,
                            @Query("limit") int limit,
                            @Query("offset") int offset,
                            @Query("sort") String sort,

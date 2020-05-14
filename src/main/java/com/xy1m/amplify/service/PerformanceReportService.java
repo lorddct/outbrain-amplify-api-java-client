@@ -9,23 +9,24 @@ import com.xy1m.amplify.model.performance.reporting.publishers.Publisher;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public interface PerformanceReportService {
 
-    PeriodicCampaign getPeriodicByCampaign(Authentication auth, String id, Date from, Date to, int limit, int offSet,
+    PeriodicCampaign getPeriodicByCampaign(Authentication auth, String marketerId, LocalDate from, LocalDate to, int limit, int offSet,
                                            String breakdown, boolean includeArchivedCampaigns,
                                            boolean includeConversionDetails, boolean conversionsByClickDate) throws APIException;
 
-    PublisherCampaign getPublishersByCampaign(Authentication auth, String id, Date from, Date to, int limit, int offSet,
+    PublisherCampaign getPublishersByCampaign(Authentication auth, String marketerId, LocalDate from, LocalDate to, int limit, int offSet,
                                               boolean includeArchivedCampaigns, boolean includeConversionDetails,
                                               boolean conversionsByClickDate) throws APIException;
 
-    PeriodicContent getPeriodicContent(Authentication auth, String id, String campaignId, Date from, Date to, int limit,
+    PeriodicContent getPeriodicContent(Authentication auth, String marketerId, String campaignId, LocalDate from, LocalDate to, int limit,
                                        int offset, String breakdown, boolean includeConversionDetails,
                                        boolean conversionsByClickDate) throws APIException;
 
-    Publisher getPublisher(Authentication auth, String id, Date from, Date to, int limit, int offset, String sort,
+    Publisher getPublisher(Authentication auth, String marketerId, LocalDate from, LocalDate to, int limit, int offset, String sort,
                            String filter, boolean includeArchivedCampaigns, String budgetId, String campaignId,
                            boolean includeConversionDetails, boolean conversionsByClickDate) throws APIException;
 }
