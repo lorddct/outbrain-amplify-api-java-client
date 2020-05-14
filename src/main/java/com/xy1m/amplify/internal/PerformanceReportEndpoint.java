@@ -62,11 +62,11 @@ public interface PerformanceReportEndpoint {
                            @Query("to") Date to,
                            @Query("limit") int limit,
                            @Query("offset") int offset,
-                           @Path("sort") String sort,
-                           @Path("filter") String filter,
-                           @Path("includeArchivedCampaigns") boolean includeArchivedCampaigns,
-                           @Path("budgetId") String budgetId,
-                           @Path("campaignId") String campaignId,
+                           @Query("sort") String sort,
+                           @Query("filter") String filter,
+                           @Query("includeArchivedCampaigns") boolean includeArchivedCampaigns,
+                           @Query("budgetId") String budgetId,
+                           @Query("campaignId") String campaignId,
                            @Query("includeConversionDetails") boolean includeConversionDetails,
                            @Query("conversionsByClickDate") boolean conversionsByClickDate);
 }
