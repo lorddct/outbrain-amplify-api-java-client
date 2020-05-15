@@ -1,5 +1,6 @@
 package com.xy1m.amplify.model.reference.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,9 +9,9 @@ import com.xy1m.amplify.model.reference.types.Platform;
 import com.xy1m.amplify.model.reference.types.PlatformBrowser;
 import com.xy1m.amplify.model.reference.types.PlatformOperatingSystem;
 import com.xy1m.amplify.model.resource.GeoLocation;
-import com.xy1m.amplify.model.resource.InterestTargeting;
 
 import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -39,7 +40,7 @@ public class Targeting {
     private List<PlatformOperatingSystem> operatingSystems;
 
     @JsonProperty("interests")
-    private List<InterestTargeting> interests;
+    private Map<String, Object> interestsMap;
 
     @JsonProperty("excludeAdBlockUsers")
     private Boolean excludeAdBlockUsers;
@@ -106,12 +107,22 @@ public class Targeting {
         this.operatingSystems = operatingSystems;
     }
 
-    public List<InterestTargeting> getInterests() {
-        return interests;
+    public Map<String, Object> getInterestsMap() {
+        return interestsMap;
     }
 
-    public void setInterests(List<InterestTargeting> interests) {
-        this.interests = interests;
+    public void setInterestsMap(Map<String, Object> interestsMap) {
+        this.interestsMap = interestsMap;
+    }
+
+    @JsonIgnore
+    public InterestDefinition getInterestDefinition() {
+        return InterestDefinition.fromMap(interestsMap);
+    }
+
+    @JsonIgnore
+    public void setInterestDefinition(InterestDefinition interestDefinition) {
+        setInterestsMap(interestDefinition.toMap());
     }
 
     @Override
@@ -124,7 +135,7 @@ public class Targeting {
         sb.append(", includeCellularNetwork=").append(includeCellularNetwork);
         sb.append(", browsers=").append(browsers);
         sb.append(", operatingSystems=").append(operatingSystems);
-        sb.append(", interests=").append(interests);
+        sb.append(", interests=").append(interestsMap);
         sb.append('}');
         return sb.toString();
     }
