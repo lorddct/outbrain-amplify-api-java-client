@@ -1,7 +1,5 @@
 package com.xy1m.amplify.model.reference.objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +14,7 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "platform",
-        "locationIds",
+        "locations",
         "excludeAdBlockUsers",
         "customAudience",
         "useExtendedNetworkTraffic",
@@ -24,14 +22,13 @@ import java.util.Map;
         "operatingSystems",
         "interests"
 })
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Targeting {
+public class RetrievalTargeting {
 
     @JsonProperty("platform")
     private List<Platform> platform;
 
-    @JsonProperty("locationIds")
-    private List<String> locationIds;
+    @JsonProperty("locations")
+    private List<GeoLocation> locations;
 
     @JsonProperty("browsers")
     private List<PlatformBrowser> browsers;
@@ -59,36 +56,12 @@ public class Targeting {
         this.platform = platform;
     }
 
-    public List<String> getLocations() {
-        return locationIds;
+    public List<GeoLocation> getLocations() {
+        return locations;
     }
 
-    public void setLocations(List<String> locations) {
-        this.locationIds = locations;
-    }
-
-    public Boolean getExcludeAdBlockUsers() {
-        return excludeAdBlockUsers;
-    }
-
-    public void setExcludeAdBlockUsers(Boolean excludeAdBlockUsers) {
-        this.excludeAdBlockUsers = excludeAdBlockUsers;
-    }
-
-    public CustomAudience getCustomAudience() {
-        return customAudience;
-    }
-
-    public void setCustomAudience(CustomAudience customAudience) {
-        this.customAudience = customAudience;
-    }
-
-    public Boolean getIncludeCellularNetwork() {
-        return includeCellularNetwork;
-    }
-
-    public void setIncludeCellularNetwork(Boolean includeCellularNetwork) {
-        this.includeCellularNetwork = includeCellularNetwork;
+    public void setLocations(List<GeoLocation> locations) {
+        this.locations = locations;
     }
 
     public List<PlatformBrowser> getBrowsers() {
@@ -115,28 +88,27 @@ public class Targeting {
         this.interestsMap = interestsMap;
     }
 
-    @JsonIgnore
-    public InterestDefinition getInterestDefinition() {
-        return InterestDefinition.fromMap(interestsMap);
+    public Boolean getExcludeAdBlockUsers() {
+        return excludeAdBlockUsers;
     }
 
-    @JsonIgnore
-    public void setInterestDefinition(InterestDefinition interestDefinition) {
-        setInterestsMap(interestDefinition.toMap());
+    public void setExcludeAdBlockUsers(Boolean excludeAdBlockUsers) {
+        this.excludeAdBlockUsers = excludeAdBlockUsers;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Targeting{");
-        sb.append("platform=").append(platform);
-        sb.append(", locations=").append(locationIds);
-        sb.append(", excludeAdBlockUsers=").append(excludeAdBlockUsers);
-        sb.append(", customAudience=").append(customAudience);
-        sb.append(", includeCellularNetwork=").append(includeCellularNetwork);
-        sb.append(", browsers=").append(browsers);
-        sb.append(", operatingSystems=").append(operatingSystems);
-        sb.append(", interests=").append(interestsMap);
-        sb.append('}');
-        return sb.toString();
+    public CustomAudience getCustomAudience() {
+        return customAudience;
+    }
+
+    public void setCustomAudience(CustomAudience customAudience) {
+        this.customAudience = customAudience;
+    }
+
+    public Boolean getIncludeCellularNetwork() {
+        return includeCellularNetwork;
+    }
+
+    public void setIncludeCellularNetwork(Boolean includeCellularNetwork) {
+        this.includeCellularNetwork = includeCellularNetwork;
     }
 }

@@ -3,6 +3,7 @@ package com.xy1m.amplify.service;
 import com.xy1m.amplify.exceptions.APIException;
 import com.xy1m.amplify.model.auth.Authentication;
 import com.xy1m.amplify.model.campaign.Campaign;
+import com.xy1m.amplify.model.campaign.CampaignCreate;
 import com.xy1m.amplify.model.campaign.CampaignExtraField;
 import com.xy1m.amplify.model.campaign.MultipleCampaignsResponse;
 import com.xy1m.amplify.model.campaign.SingleCampaignUpdateResponse;
@@ -18,7 +19,7 @@ public interface CampaignService {
 
     Campaign update(Authentication auth, Campaign campaign, CampaignExtraField... extraFields) throws APIException;
 
-    Campaign create(Authentication auth, Campaign campaign, CampaignExtraField... extraFields) throws APIException;
+    Campaign create(Authentication auth, CampaignCreate campaign, CampaignExtraField... extraFields) throws APIException;
 
     List<SingleCampaignUpdateResponse> batchUpdate(Authentication auth, List<Campaign> campaigns);
 

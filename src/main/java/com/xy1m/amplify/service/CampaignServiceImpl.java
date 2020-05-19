@@ -5,6 +5,7 @@ import com.xy1m.amplify.exceptions.APIException;
 import com.xy1m.amplify.internal.CampaignEndpoint;
 import com.xy1m.amplify.model.auth.Authentication;
 import com.xy1m.amplify.model.campaign.Campaign;
+import com.xy1m.amplify.model.campaign.CampaignCreate;
 import com.xy1m.amplify.model.campaign.CampaignExtraField;
 import com.xy1m.amplify.model.campaign.MultipleCampaignsResponse;
 import com.xy1m.amplify.model.campaign.SingleCampaignUpdateResponse;
@@ -39,7 +40,7 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public Campaign create(Authentication auth, Campaign campaign, CampaignExtraField... extraFields) throws APIException {
+    public Campaign create(Authentication auth, CampaignCreate campaign, CampaignExtraField... extraFields) throws APIException {
         checkArgument(campaign != null, "Campaign required");
         String accessToken = auth.getToken().getAccessToken();
         return endpoint.create(accessToken, CampaignExtraField.serialize(extraFields), campaign);

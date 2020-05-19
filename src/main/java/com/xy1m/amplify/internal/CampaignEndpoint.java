@@ -1,6 +1,7 @@
 package com.xy1m.amplify.internal;
 
 import com.xy1m.amplify.model.campaign.Campaign;
+import com.xy1m.amplify.model.campaign.CampaignCreate;
 import com.xy1m.amplify.model.resource.GeoLocation;
 import com.xy1m.amplify.model.campaign.MultipleCampaignsResponse;
 import com.xy1m.amplify.model.campaign.SingleCampaignUpdateResponse;
@@ -36,7 +37,7 @@ public interface CampaignEndpoint {
     @Headers("Content-Type: application/json")
     Campaign create(@Header("OB-TOKEN-V1") String accessToken,
                     @Query("extraFields") String extraFields,
-                    @Body Campaign campaign);
+                    @Body CampaignCreate campaign);
 
     @PUT(Paths.API_PATH_PREFIX + "/campaigns")
     @Headers("Content-Type: application/json")
