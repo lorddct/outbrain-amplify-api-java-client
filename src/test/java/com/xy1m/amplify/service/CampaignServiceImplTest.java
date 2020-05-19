@@ -6,7 +6,8 @@ import com.xy1m.amplify.internal.config.SerializationConfig;
 import com.xy1m.amplify.internal.serialization.SerializationMapperCreator;
 import com.xy1m.amplify.model.auth.Authentication;
 import com.xy1m.amplify.model.campaign.Campaign;
-import com.xy1m.amplify.model.reference.objects.Targeting;
+import com.xy1m.amplify.model.campaign.CampaignCreate;
+import com.xy1m.amplify.model.reference.objects.TargetingCreate;
 import com.xy1m.amplify.model.reference.types.CampaignObjective;
 import com.xy1m.amplify.model.reference.types.Platform;
 import org.junit.BeforeClass;
@@ -52,14 +53,14 @@ public class CampaignServiceImplTest {
     @Test
     @Ignore
     public void create() {
-        Campaign payload = new Campaign();
+        CampaignCreate payload = new CampaignCreate();
         payload.setObjective(CampaignObjective.Traffic);
         payload.setName("George Test Campaign via SDK");
         payload.setEnabled(false);
         payload.setBudgetId("00a4903f01e6d848e7cf34b3f42dbc199b");
         payload.setCpc(BigDecimal.valueOf(0.5));
 
-        Targeting targeting = new Targeting();
+        TargetingCreate targeting = new TargetingCreate();
         targeting.setPlatform(Arrays.asList(Platform.DESKTOP));
         payload.setTargeting(targeting);
         Campaign result = amplify.getCampaignService().create(auth, payload, null);

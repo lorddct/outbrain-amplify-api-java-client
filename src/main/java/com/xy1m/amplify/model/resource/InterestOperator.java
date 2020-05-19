@@ -1,4 +1,4 @@
-package com.xy1m.amplify.model.reference.objects;
+package com.xy1m.amplify.model.resource;
 
 public enum InterestOperator {
 

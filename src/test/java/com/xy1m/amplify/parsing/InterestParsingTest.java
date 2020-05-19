@@ -3,7 +3,7 @@ package com.xy1m.amplify.parsing;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xy1m.amplify.model.campaign.Campaign;
-import com.xy1m.amplify.model.reference.objects.InterestDefinition;
+import com.xy1m.amplify.model.resource.InterestTargeting;
 
 import java.util.Map;
 
@@ -400,10 +400,10 @@ public class InterestParsingTest {
     public static void main(String[] arg) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         Campaign campaign = objectMapper.readValue(json3, Campaign.class);
-        InterestDefinition definition = campaign.getTargeting().getInterestDefinition();
-        Map<String, Object> map = definition.toMap();
-        System.out.println(definition);
-        System.out.println(map);
+        Map<String, Object> interestMap = campaign.getTargeting().getInterestsMap();
+        InterestTargeting targeting = InterestTargeting.fromMap(interestMap);
+        System.out.println(targeting);
+        System.out.println(interestMap);
     }
 
 }

@@ -1,12 +1,13 @@
 package com.xy1m.amplify.model.reference.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.xy1m.amplify.model.reference.types.Platform;
 import com.xy1m.amplify.model.reference.types.PlatformBrowser;
 import com.xy1m.amplify.model.reference.types.PlatformOperatingSystem;
-import com.xy1m.amplify.model.resource.GeoLocation;
+import com.xy1m.amplify.model.resource.InterestTargetingCreate;
 
 import java.util.List;
 import java.util.Map;
@@ -22,13 +23,13 @@ import java.util.Map;
         "operatingSystems",
         "interests"
 })
-public class RetrievalTargeting {
+public class TargetingCreate {
 
     @JsonProperty("platform")
     private List<Platform> platform;
 
     @JsonProperty("locations")
-    private List<GeoLocation> locations;
+    private List<String> locations;
 
     @JsonProperty("browsers")
     private List<PlatformBrowser> browsers;
@@ -56,11 +57,11 @@ public class RetrievalTargeting {
         this.platform = platform;
     }
 
-    public List<GeoLocation> getLocations() {
+    public List<String> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<GeoLocation> locations) {
+    public void setLocations(List<String> locations) {
         this.locations = locations;
     }
 
@@ -86,6 +87,11 @@ public class RetrievalTargeting {
 
     public void setInterestsMap(Map<String, Object> interestsMap) {
         this.interestsMap = interestsMap;
+    }
+
+    @JsonIgnore
+    public void setInterestDefinition(InterestTargetingCreate interestDefinition) {
+        setInterestsMap(interestDefinition.toMap());
     }
 
     public Boolean getExcludeAdBlockUsers() {

@@ -12,7 +12,6 @@ import com.xy1m.amplify.model.reference.objects.CampaignOptimization;
 import com.xy1m.amplify.model.reference.objects.CampaignScheduling;
 import com.xy1m.amplify.model.reference.objects.CampaignTrackingPixel;
 import com.xy1m.amplify.model.reference.objects.LiveStatus;
-import com.xy1m.amplify.model.reference.objects.RetrievalTargeting;
 import com.xy1m.amplify.model.reference.objects.Targeting;
 import com.xy1m.amplify.model.reference.types.CampaignObjective;
 import com.xy1m.amplify.model.reference.types.CampaignOnAirType;
@@ -73,7 +72,7 @@ public class Campaign {
     @JsonProperty("autoArchived")
     private Boolean autoArchived;
     @JsonProperty("targeting")
-    private RetrievalTargeting targeting;
+    private Targeting targeting;
     @JsonProperty("feeds")
     private List<String> feeds;
     @JsonProperty("autoExpirationOfPromotedLinks")
@@ -178,11 +177,11 @@ public class Campaign {
         this.autoArchived = autoArchived;
     }
 
-    public RetrievalTargeting getTargeting() {
+    public Targeting getTargeting() {
         return targeting;
     }
 
-    public void setTargeting(RetrievalTargeting targeting) {
+    public void setTargeting(Targeting targeting) {
         this.targeting = targeting;
     }
 

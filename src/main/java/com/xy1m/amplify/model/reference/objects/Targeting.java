@@ -9,6 +9,7 @@ import com.xy1m.amplify.model.reference.types.Platform;
 import com.xy1m.amplify.model.reference.types.PlatformBrowser;
 import com.xy1m.amplify.model.reference.types.PlatformOperatingSystem;
 import com.xy1m.amplify.model.resource.GeoLocation;
+import com.xy1m.amplify.model.resource.InterestTargeting;
 
 import java.util.List;
 import java.util.Map;
@@ -30,8 +31,8 @@ public class Targeting {
     @JsonProperty("platform")
     private List<Platform> platform;
 
-    @JsonProperty("locationIds")
-    private List<String> locationIds;
+    @JsonProperty("locations")
+    private List<GeoLocation> locations;
 
     @JsonProperty("browsers")
     private List<PlatformBrowser> browsers;
@@ -59,12 +60,12 @@ public class Targeting {
         this.platform = platform;
     }
 
-    public List<String> getLocations() {
-        return locationIds;
+    public List<GeoLocation> getLocations() {
+        return locations;
     }
 
-    public void setLocations(List<String> locations) {
-        this.locationIds = locations;
+    public void setLocations(List<GeoLocation> locations) {
+        this.locations = locations;
     }
 
     public Boolean getExcludeAdBlockUsers() {
@@ -116,20 +117,15 @@ public class Targeting {
     }
 
     @JsonIgnore
-    public InterestDefinition getInterestDefinition() {
-        return InterestDefinition.fromMap(interestsMap);
-    }
-
-    @JsonIgnore
-    public void setInterestDefinition(InterestDefinition interestDefinition) {
-        setInterestsMap(interestDefinition.toMap());
+    public InterestTargeting getInterestTargeting() {
+        return InterestTargeting.fromMap(interestsMap);
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Targeting{");
         sb.append("platform=").append(platform);
-        sb.append(", locations=").append(locationIds);
+        sb.append(", locations=").append(locations);
         sb.append(", excludeAdBlockUsers=").append(excludeAdBlockUsers);
         sb.append(", customAudience=").append(customAudience);
         sb.append(", includeCellularNetwork=").append(includeCellularNetwork);
